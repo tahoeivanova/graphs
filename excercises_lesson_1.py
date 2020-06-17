@@ -131,3 +131,32 @@ plt.show()
 
 
 # 4. Добавьте ребрам аттрибут с названием маршрута или трассы
+
+
+
+# наикратчайший путь
+
+print(nx.shortest_path(G, source='Москва', target='Екатеринбург', weight='weight'))
+
+# если несколько коротких путей
+# возвращает генератор
+all_p = nx.all_shortest_paths(G, source='Москва', target='Екатеринбург', weight='weight')
+'''print(next(all_p))
+print(next(all_p)) # та же длина, но другой мартшрут
+'''
+
+# Дейкстра
+print(nx.dijkstra_path(G, source='Москва', target='Екатеринбург', weight='weight'))
+
+# Дейкстра - длина пути
+print(nx.dijkstra_path_length(G, source='Москва', target='Екатеринбург', weight='weight'))
+
+print(nx.bellman_ford_path(G, source='Москва', target='Екатеринбург', weight='weight'))
+
+# есть библиотека pip install bellmanford
+
+import bellmanford as bf
+
+# на выходе - длина пути, сам путь, есть ли отрицательные циклы
+path_length, path_nodes, negative_cycle = bf.bellman_ford(G, source='Москва', target='Екатеринбург', weight='weight')
+print(path_length, path_nodes, negative_cycle)
